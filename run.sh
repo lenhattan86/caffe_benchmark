@@ -1,1 +1,2 @@
-echo "run benchmark"
+model=$1
+echo "run model $model"
