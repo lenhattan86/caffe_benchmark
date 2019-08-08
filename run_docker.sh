@@ -1,1 +1,1 @@
-docker run lenhattan86/caffe:cpu ls; ./run.sh lenet
+docker run lenhattan86/caffe:cpu ls caffe_benchmark
