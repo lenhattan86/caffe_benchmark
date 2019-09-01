@@ -16,12 +16,20 @@ fi
 SECONDS=0
 if [ $model == "lenet" ]; then
     if [ $device == "cpu" ]; then
-        caffe train --solver=examples/mnist/lenet_solver_cpu.prototxt $@
+        caffe train --solver=examples/mnist/lenet_solver_$device.prototxt $@
     elif [ $device == "gpu" ]; then
         caffe train --solver=examples/mnist/lenet_solver.prototxt $@    
     else
         echo "unknown device"        
-    fi  
+    fi 
+elif [ $model == "cifar-10"]; then
+    if [ $device == "cpu" ]; then
+        caffe train --solver=examples/cifar10/cifar10_quick_solver_$device.prototxt $@
+    elif [ $device == "gpu" ]; then
+        caffe train --solver=examples/cifar10/cifar10_quick_solver.prototxt $@
+    else
+        echo "unknown device"        
+    fi
 else
     echo "$model does not exist"    
 fi
