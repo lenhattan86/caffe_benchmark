@@ -30,6 +30,14 @@ elif [ $model == "cifar-10"]; then
     else
         echo "unknown device"        
     fi
+elif [ $model == "caffenet"]; then
+    if [ $device == "cpu" ]; then
+        caffe train --solver=models/bvlc_reference_caffenet/solver_cpu.prototxt $@
+    elif [ $device == "gpu" ]; then
+        caffe train --solver=models/bvlc_reference_caffenet/solver.prototxt $@
+    else
+        echo "unknown device"        
+    fi
 else
     echo "$model does not exist"    
 fi
